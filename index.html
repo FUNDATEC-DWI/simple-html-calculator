@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./estilo.css" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-2 mb-3">
+        <input type="number" class="form-control" placeholder="Número" id="num1" />
+      </div>
+      <div class="col-sm-12 col-md-2 mb-3">
+        <select class="form-control" id="operacao">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+      </div>
+
+      <div class="col-sm-12 col-md-2 mb-3">
+        <input type="number" class="form-control" placeholder="Número" id="num2" />
+      </div>
+      <div class="col-sm-12 col-md-2 mb-3">
+        <button class="btn btn-primary btn-resultado" id="botao-calculo">
+          =
+        </button>
+      </div>
+      <div class="col-sm-12 col-md-2 mb-3">
+        <input type="Number" class="form-control" id="resultado" readonly />
+      </div>
+    </div>
+  </div>
+  <script>
+    function somar(num1, num2) {
+      return num1 + num2;
+    }
+
+    function subtrair(num1, num2) {
+      return num1 - num2;
+    }
+
+    function dividir(num1, num2) {
+      return num1 / num2;
+    }
+
+    function multiplicar(num1, num2) {
+      return num1 * num2;
+    }
+
+    document
+      .getElementById("botao-calculo")
+      .addEventListener("click", function () {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let operador = document.getElementById("operacao").value;
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let resultado;
+
+        if (operador === "+") {
+          resultado = somar(num1, num2);
+        } else if (operador === "-") {
+          resultado = subtrair(num1, num2);
+        } else if (operador === "/") {
+          resultado = dividir(num1, num2);
+        } else if (operador === "*") {
+          resultado = multiplicar(num1, num2);
+        }
+
+        document.getElementById("resultado").value = resultado;
+      });
+  </script>
+</body>
+
+</html>
